@@ -13,3 +13,5 @@ const:
   template_sphone_relpath: ../sphone
   # user_data_realdir からの相対パス
   user_data_sphone_relpath: sphone
+  # block_realdir からの相対パス
+  block_sphone_relpath: ../../sphone/Block

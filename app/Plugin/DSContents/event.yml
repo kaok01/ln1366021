@@ -312,3 +312,5 @@ front.cart.add.exception:
 
 admin.content.page.edit.complete:
     - [onAdminContentPageEditComplete, NORMAL]
+admin.content.block.edit.complete:
+    - [onAdminContentBlockEditComplete, NORMAL]
