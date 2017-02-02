@@ -45,7 +45,6 @@ class DSContentsServiceProvider implements ServiceProviderInterface
         )->bind('DSContents_info');
 
         $app->match(sprintf('/%s/dsc/sp/page', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::index')->bind('plugin_DSContents_admin_content_page');
-        $app->match(sprintf('/%s/dsc/sp/page/new', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::edit')->bind('plugin_DSContents_admin_content_page_new');
         $app->match(sprintf('/%s/dsc/sp/page/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::edit')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_edit');
         $app->delete(sprintf('/%s/dsc/sp/page/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::delete')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_delete');
 

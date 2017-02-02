@@ -20,8 +20,7 @@
 {% form_theme form 'Form/bootstrap_3_horizontal_layout.html.twig' %}
 
 {% block main %}
-    <form role="form" name="content_page_form" id="content_page_form" method="post"
-          action="{%- if page_id is not null %}{{ url('plugin_DSContents_admin_content_page_edit', {id: page_id}) }}{% else %}{{ url('plugin_DSContents_admin_content_page_new') }}{% endif -%}">
+    <form role="form" name="content_page_form" id="content_page_form" method="post" action="{{ url('plugin_DSContents_admin_content_page_edit', {id: page_id}) }}">
         {{ form_widget(form._token) }}
         {{ form_widget(form.id) }}
         {{ form_widget(form.DeviceType, { attr : { style : 'display: none;' } } ) }}
