@@ -316,3 +316,5 @@ admin.content.page.delete.complete:
     - [onAdminContentPageDeleteComplete, NORMAL]
 admin.content.block.edit.complete:
     - [onAdminContentBlockEditComplete, NORMAL]
+admin.content.block.delete.complete:
+    - [onAdminContentBlockDeleteComplete, NORMAL]

@@ -159,4 +159,44 @@ class Event
             }
         }
     }
+
+    /**
+     * @param EventArgs $event
+     */
+    public function onAdminContentBlockDeleteComplete($event)
+    {
+        $app = $this->app;
+        /** @var Block $Block */
+        $Block = $event->getArgument('Block');
+
+        if ($Block->getDeviceType()->getId() == DeviceType::DEVICE_TYPE_PC) {
+
+            $relpath = $app['config']['DSContents']['const']['block_sphone_relpath'];
+            $relpath = strlen($app['config']['DSContents']['const']['block_sphone_relpath']) ?
+                $relpath . '/' :
+                $relpath;
+            $fileName = $relpath . $Block->getFileName();
+
+            $DeviceType = $app['eccube.repository.master.device_type']->find(DeviceType::DEVICE_TYPE_SP);
+            $conditions = array(
+                'file_name' => $fileName,
+                'DeviceType' => $DeviceType,
+            );
+            $SpBlock = $app['eccube.repository.block']->findOneBy($conditions);
+
+            if ($SpBlock) {
+
+                $app['orm.em']->remove($SpBlock);
+                $app['orm.em']->flush();
+                $app->addSuccess('admin.plugin.dscontents.block.delete.db', 'admin');
+
+                $fs = new Filesystem();
+                $filePath = $app['config']['block_realdir'] . '/' . $fileName . '.twig';
+                if ($fs->exists($filePath)) {
+                    $fs->remove($filePath);
+                    $app->addSuccess('admin.plugin.dscontents.block.delete.file', 'admin');
+                }
+            }
+        }
+    }
 }
