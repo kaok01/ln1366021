@@ -43,6 +43,10 @@ class DSContentsServiceProvider implements ServiceProviderInterface
             'Plugin\DSContents\Controller\AdminDSContentsController::index'
         )->bind('DSContents_info');
 
+        $app->match(sprintf('/%s/dsc/sp/page', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::index')->bind('plugin_DSContents_admin_content_page');
+        $app->match(sprintf('/%s/dsc/sp/page/new', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::edit')->bind('plugin_DSContents_admin_content_page_new');
+        $app->match(sprintf('/%s/dsc/sp/page/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::edit')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_edit');
+        $app->delete(sprintf('/%s/dsc/sp/page/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::delete')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_delete');
 
         /**
          * ルーティング登録
@@ -83,7 +87,7 @@ class DSContentsServiceProvider implements ServiceProviderInterface
          * フォームタイプ登録
          */
         $app['form.types'] = $app->share($app->extend('form.types', function ($types) use ($app) {
-
+            $types[] = new \Plugin\DSContents\Form\Type\Admin\Content\MainEditType();
             return $types;
         })
         );
@@ -104,6 +108,22 @@ class DSContentsServiceProvider implements ServiceProviderInterface
                             $nav[$key]['child'][0]['child'][] = $addNavi;
                         }
                     }
+
+                    foreach ($nav as &$p) {
+                        if ($p['id'] == 'content') {
+                            // array_spliceのキーの都合上、都度foreachすること
+                            foreach ($p['child'] as $key => $child) {
+                                if ($child['id'] == 'page') {
+                                    array_splice($p['child'], $key + 1, 0, array(array(
+                                        'id' => 'plugin_DSContents_page_sp',
+                                        'name' => 'スマートフォン',
+                                        'url' => 'plugin_DSContents_admin_content_page',
+                                    )));
+                                }
+                            }
+                        }
+                    }
+
                     $config['nav'] = $nav;
 
                     return $config;
