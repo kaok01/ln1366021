@@ -8,8 +8,6 @@ composer.phar
 !/app/config/eccube/.gitkeep
 /app/log/*
 !/app/log/.gitkeep
-/app/Plugin/*
-!/app/Plugin/.gitkeep
 /app/template/*
 !/app/template/admin
 !/app/template/default
