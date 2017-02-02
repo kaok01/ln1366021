@@ -27,6 +27,7 @@ class Event
     {
         $this->app = $app;
     }
+
     /**
      * @param EventArgs $event
      */
@@ -71,6 +72,43 @@ class Event
                 $pageData = Str::convertLineFeed($form->get('tpl_data')->getData());
                 $fs->dumpFile($filePath, $pageData);
                 $app->addSuccess('admin.plugin.dscontents.page.copy.file', 'admin');
+            }
+        }
+    }
+
+    /**
+     * @param EventArgs $event
+     */
+    public function onAdminContentPageDeleteComplete($event)
+    {
+        $app = $this->app;
+        $templatePath = $app['eccube.repository.page_layout']->getWriteTemplatePath(true);
+        /** @var PageLayout $PageLayout */
+        $PageLayout = $event->getArgument('PageLayout');
+
+        if ($PageLayout->getDeviceType()->getId() == DeviceType::DEVICE_TYPE_PC) {
+
+            $DeviceType = $app['eccube.repository.master.device_type']->find(DeviceType::DEVICE_TYPE_SP);
+            $conditions = array(
+                'url' => $PageLayout->getUrl(),
+                'DeviceType' => $DeviceType,
+            );
+            /** @var PageLayout $SpPageLayout */
+            $SpPageLayout = $app['eccube.repository.page_layout']->findOneBy($conditions);
+
+            if ($SpPageLayout) {
+
+                $filePath = $templatePath . '/' . $SpPageLayout->getFileName() . '.twig';
+
+                $app['orm.em']->remove($SpPageLayout);
+                $app['orm.em']->flush();
+                $app->addSuccess('admin.plugin.dscontents.page.delete.db', 'admin');
+
+                $fs = new Filesystem();
+                if ($fs->exists($filePath)) {
+                    $fs->remove($filePath);
+                    $app->addSuccess('admin.plugin.dscontents.page.delete.file', 'admin');
+                }
             }
         }
     }

@@ -267,6 +267,14 @@ class DSContentsEvent
     /**
      * @param EventArgs $event
      */
+    public function onAdminContentPageDeleteComplete($event)
+    {
+        $this->app['eccube.plugin.DSContents.event']->onAdminContentPageDeleteComplete($event);
+    }
+
+    /**
+     * @param EventArgs $event
+     */
     public function onAdminContentBlockEditComplete($event)
     {
         $this->app['eccube.plugin.DSContents.event']->onAdminContentBlockEditComplete($event);
