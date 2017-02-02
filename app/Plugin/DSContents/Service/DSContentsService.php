@@ -1,5 +1,4 @@
 <?php
-
 /*
 * This file is part of EC-CUBE
 *
@@ -9,26 +8,20 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Plugin\DSContents\Helper;
+
+namespace Plugin\DSContents\Service;
 
 use Eccube\Application;
 
-class MailHelper
+class DSContentsService
 {
+    /**
+     * @var Application
+     */
+    protected $app;
 
-    /** @var \Eccube\Application */
-    public $app;
-
-
-    /** @var \Eccube\Entity\BaseInfo */
-    public $BaseInfo;
-
-    public function __construct(Application $app)
+    public function __construct($app)
     {
         $this->app = $app;
-        $this->BaseInfo = $app['eccube.repository.base_info']->get();
     }
-
-
-
 }

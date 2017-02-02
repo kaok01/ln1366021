@@ -1,4 +1,4 @@
-admin.plugin.dscontents.save.complete:基本情報を保存しました。
+admin.plugin.dscontents.save.complete: 基本情報を保存しました。
 admin.plugin.dscontents.save.error: 基本情報の保存に失敗しました。
 admin.plugin.dscontents.validate.zero.error: 0は設定できません。
 admin.plugin.dscontents.notfound: が存在しません。

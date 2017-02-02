@@ -13,17 +13,6 @@ namespace Plugin\DSContents;
 use Eccube\Application;
 use Eccube\Event\EventArgs;
 use Eccube\Event\TemplateEvent;
-use Eccube\Exception\ShoppingException;
-use Eccube\Exception\CartException;
-use Eccube\Entity\CustomerAddress;
-
-use Symfony\Component\Form\FormError;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Eccube\Common\Constant;
 
 /**
  * プラグインイベント処理ルーティングクラス
@@ -71,19 +60,12 @@ class DSContentsEvent
     }
     public function onRenderAdminProductIndex(TemplateEvent $event){
 
-        $helper = new Event\WorkPlace\AdminProductIndex();
-        $helper->createTwig($event);
     }
 
     public function onRenderAdminOrderIndex(TemplateEvent $event){
 
-        $helper = new Event\WorkPlace\AdminOrderIndex();
-        $helper->createTwig($event);
     }
     public function onRenderAdminOrderEdit(TemplateEvent $event){
-        //return;
-        $helper = new Event\WorkPlace\AdminOrderEdit();
-        $helper->createTwig($event);
     }
 
     public function onFrontShoppingIndexInitialize(EventArgs $event){

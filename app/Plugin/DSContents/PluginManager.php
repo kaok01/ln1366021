@@ -2,8 +2,6 @@
 
 namespace Plugin\DSContents;
 
-use Eccube\Entity\Master\DeviceType;
-use Eccube\Entity\PageLayout;
 use Eccube\Plugin\AbstractPluginManager;
 
 

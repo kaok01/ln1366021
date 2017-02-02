@@ -42,7 +42,7 @@ abstract class AbstractWorkPlace
      */
     public function createForm(EventArgs $event)
     {
-        throw new MethodNotAllowedException();
+        throw new MethodNotAllowedException(array());
     }
 
     /**
@@ -53,7 +53,7 @@ abstract class AbstractWorkPlace
      */
     public function renderView(Request $request, Response $response)
     {
-        throw new MethodNotAllowedException();
+        throw new MethodNotAllowedException(array());
     }
 
     /**
@@ -63,7 +63,7 @@ abstract class AbstractWorkPlace
      */
     public function createTwig(TemplateEvent $event)
     {
-        throw new MethodNotAllowedException();
+        throw new MethodNotAllowedException(array());
     }
 
     /**
@@ -73,7 +73,7 @@ abstract class AbstractWorkPlace
      */
     public function save(EventArgs $event)
     {
-        throw new MethodNotAllowedException();
+        throw new MethodNotAllowedException(array());
     }
 
     /**
