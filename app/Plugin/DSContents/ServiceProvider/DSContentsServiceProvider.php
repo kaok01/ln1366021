@@ -49,6 +49,11 @@ class DSContentsServiceProvider implements ServiceProviderInterface
         $app->match(sprintf('/%s/dsc/sp/page/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::edit')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_edit');
         $app->delete(sprintf('/%s/dsc/sp/page/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::delete')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_delete');
 
+        $app->match(sprintf('/%s/dsc/sp/block', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::index')->bind('plugin_DSContents_admin_content_block');
+        $app->match(sprintf('/%s/dsc/sp/block/new', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::edit')->bind('plugin_DSContents_admin_content_block_new');
+        $app->match(sprintf('/%s/dsc/sp/block/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::edit')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_block_edit');
+        $app->delete(sprintf('/%s/dsc/sp/block/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::delete')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_block_delete');
+
         /**
          * ルーティング登録
          * 管理画面 > 商品一覧 > メニュー > ＤＳコンテンツ商品管理
@@ -89,6 +94,7 @@ class DSContentsServiceProvider implements ServiceProviderInterface
          */
         $app['form.types'] = $app->share($app->extend('form.types', function ($types) use ($app) {
             $types[] = new \Plugin\DSContents\Form\Type\Admin\Content\MainEditType();
+            $types[] = new \Plugin\DSContents\Form\Type\Admin\Content\BlockType();
             return $types;
         })
         );
@@ -123,6 +129,15 @@ class DSContentsServiceProvider implements ServiceProviderInterface
                                         'id' => 'plugin_DSContents_page_sp',
                                         'name' => 'スマートフォン',
                                         'url' => 'plugin_DSContents_admin_content_page',
+                                    )));
+                                }
+                            }
+                            foreach ($p['child'] as $key => $child) {
+                                if ($child['id'] == 'block') {
+                                    array_splice($p['child'], $key + 1, 0, array(array(
+                                        'id' => 'plugin_DSContents_block_sp',
+                                        'name' => 'スマートフォン',
+                                        'url' => 'plugin_DSContents_admin_content_block',
                                     )));
                                 }
                             }
