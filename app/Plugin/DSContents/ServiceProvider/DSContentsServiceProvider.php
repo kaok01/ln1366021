@@ -18,6 +18,7 @@ use Monolog\Handler\RotatingFileHandler;
 use Monolog\Processor\IntrospectionProcessor;
 use Monolog\Processor\ProcessIdProcessor;
 use Monolog\Processor\WebProcessor;
+use Plugin\DSContents\Event\Event;
 use Silex\Application as BaseApplication;
 use Silex\ServiceProviderInterface;
 use Symfony\Bridge\Monolog\Logger;
@@ -91,6 +92,10 @@ class DSContentsServiceProvider implements ServiceProviderInterface
             return $types;
         })
         );
+
+        $app['eccube.plugin.DSContents.event'] = $app->share(function () use ($app) {
+            return new Event($app);
+        });
 
         /**
          * メニュー登録

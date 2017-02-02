@@ -9,4 +9,7 @@ orm.path:
 
 const:
   setting:
-
+  # template_realdir からの相対パス
+  template_sphone_relpath: ../sphone
+  # user_data_realdir からの相対パス
+  user_data_sphone_relpath: sphone
