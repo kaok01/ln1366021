@@ -952,6 +952,9 @@ class ShoppingController extends AbstractController
             $request
         );
         $app['eccube.event.dispatcher']->dispatch(EccubeEvents::FRONT_SHOPPING_NONMEMBER_INITIALIZE, $event);
+        if($event->getArgument('form')){
+            $form = $event->getArgument('form');
+        }
 
         $form->handleRequest($request);
 
