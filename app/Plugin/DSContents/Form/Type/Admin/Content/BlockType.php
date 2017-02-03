@@ -49,6 +49,6 @@ class BlockType extends AbstractType
      */
     public function getName()
     {
-        return 'plugin_DSContents_block';
+        return 'plugin_dscontents_block';
     }
 }

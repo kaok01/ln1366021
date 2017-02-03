@@ -41,11 +41,11 @@
                                                 <a class="dropdown-toggle" data-toggle="dropdown"><svg class="cb cb-ellipsis-h"> <use xlink:href="#cb-ellipsis-h" /></svg></a>
                                                 <ul id="sortable_list__menu--{{ Block.id }}" class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <a href="{{ url('plugin_DSContents_admin_content_block_edit', {id: Block.id}) }}">編集</a>
+                                                        <a href="{{ url('plugin_dscontents_admin_content_block_edit', {id: Block.id}) }}">編集</a>
                                                     </li>
                                                     <li>
                                                         {% if Block.deletable_flg == 1 %}
-                                                            <a href="{{ url('plugin_DSContents_admin_content_block_delete', { 'id': Block.id}) }}" {{ csrf_token_for_anchor() }} data-method="delete" data-message="このブロックを削除してもよろしいですか？">削除</a>
+                                                            <a href="{{ url('plugin_dscontents_admin_content_block_delete', { 'id': Block.id}) }}" {{ csrf_token_for_anchor() }} data-method="delete" data-message="このブロックを削除してもよろしいですか？">削除</a>
                                                         {% else %}
                                                             <a>削除</a>
                                                         {% endif %}
@@ -63,7 +63,7 @@
 
             <div id="block_list__footer" class="row btn_area2">
                 <div id="block_list__insert_button" class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 text-center">
-                    <a class="btn btn-primary btn-block btn-lg" href="{{ url('plugin_DSContents_admin_content_block_new')}}">新規入力</a>
+                    <a class="btn btn-primary btn-block btn-lg" href="{{ url('plugin_dscontents_admin_content_block_new')}}">新規入力</a>
                 </div>
             </div>
 

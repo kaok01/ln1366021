@@ -47,14 +47,14 @@
                                                 </li>
                                                 <li>
                                                     {% if PageLayout.filename|length >= 1 %}
-                                                        <a href="{{ url('plugin_DSContents_admin_content_page_edit', {id : PageLayout.id } ) }}">ページ編集</a>
+                                                        <a href="{{ url('plugin_dscontents_admin_content_page_edit', {id : PageLayout.id } ) }}">ページ編集</a>
                                                     {% else %}
                                                         <a>ページ編集</a>
                                                     {% endif %}
                                                 </li>
                                                 <li>
                                                     {% if PageLayout.edit_flg == constant('Eccube\\Entity\\PageLayout::EDIT_FLG_USER') %}
-                                                        <a href="{{ url('plugin_DSContents_admin_content_page_delete', { 'id': PageLayout.id}) }}" {{ csrf_token_for_anchor() }} data-method="delete" data-message="このページを削除してもよろしいですか？">削除</a>
+                                                        <a href="{{ url('plugin_dscontents_admin_content_page_delete', { 'id': PageLayout.id}) }}" {{ csrf_token_for_anchor() }} data-method="delete" data-message="このページを削除してもよろしいですか？">削除</a>
                                                     {% else %}
                                                         <a>削除</a>
                                                     {% endif %}

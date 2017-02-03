@@ -61,7 +61,7 @@ class BlockController extends AbstractController
         }
 
         $builder = $app['form.factory']
-            ->createBuilder('plugin_DSContents_block', $Block);
+            ->createBuilder('plugin_dscontents_block', $Block);
 
         $html = '';
         $previous_filename = null;
@@ -132,7 +132,7 @@ class BlockController extends AbstractController
 
                 $app->addSuccess('admin.register.complete', 'admin');
 
-                return $app->redirect($app->url('plugin_DSContents_admin_content_block_edit', array('id' => $Block->getId())));
+                return $app->redirect($app->url('plugin_dscontents_admin_content_block_edit', array('id' => $Block->getId())));
             }
         }
 
@@ -158,7 +158,7 @@ class BlockController extends AbstractController
 
         if (!$Block) {
             $app->deleteMessage();
-            return $app->redirect($app->url('plugin_DSContents_admin_content_block'));
+            return $app->redirect($app->url('plugin_dscontents_admin_content_block'));
         }
 
         // ユーザーが作ったブロックのみ削除する
@@ -187,6 +187,6 @@ class BlockController extends AbstractController
         }
 
 
-        return $app->redirect($app->url('plugin_DSContents_admin_content_block'));
+        return $app->redirect($app->url('plugin_dscontents_admin_content_block'));
     }
 }

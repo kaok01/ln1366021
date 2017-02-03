@@ -21,7 +21,7 @@
 
 {% block main %}
 <form name="content_block_form" id="content_block_form" method="post" action="
-{%- if block_id is not null %}{{ url('plugin_DSContents_admin_content_block_edit', {id: block_id}) }}{% else %}{{ url('plugin_DSContents_admin_content_block_new')}}{% endif -%}">
+{%- if block_id is not null %}{{ url('plugin_dscontents_admin_content_block_edit', {id: block_id}) }}{% else %}{{ url('plugin_dscontents_admin_content_block_new')}}{% endif -%}">
     {{ form_widget(form._token) }}
     {{ form_widget(form.id) }}
     {{ form_widget(form.DeviceType, { attr : { style : 'display: none;' } } ) }}
@@ -75,7 +75,7 @@
 
             <div id="detail_box__footer" class="row hidden-xs hidden-sm">
                 <div id="detail_box__back_button" class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 text-center btn_area">
-                    <p><a href="{{ url('plugin_DSContents_admin_content_block') }}">戻る</a></p>
+                    <p><a href="{{ url('plugin_dscontents_admin_content_block') }}">戻る</a></p>
                 </div>
             </div>
 

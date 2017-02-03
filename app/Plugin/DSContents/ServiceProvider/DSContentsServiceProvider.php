@@ -44,14 +44,14 @@ class DSContentsServiceProvider implements ServiceProviderInterface
             'Plugin\DSContents\Controller\AdminDSContentsController::index'
         )->bind('DSContents_info');
 
-        $app->match(sprintf('/%s/dsc/sp/page', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::index')->bind('plugin_DSContents_admin_content_page');
-        $app->match(sprintf('/%s/dsc/sp/page/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::edit')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_edit');
-        $app->delete(sprintf('/%s/dsc/sp/page/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::delete')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_page_delete');
+        $app->match(sprintf('/%s/dsc/sp/page', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::index')->bind('plugin_dscontents_admin_content_page');
+        $app->match(sprintf('/%s/dsc/sp/page/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::edit')->assert('id', '\d+')->bind('plugin_dscontents_admin_content_page_edit');
+        $app->delete(sprintf('/%s/dsc/sp/page/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\PageController::delete')->assert('id', '\d+')->bind('plugin_dscontents_admin_content_page_delete');
 
-        $app->match(sprintf('/%s/dsc/sp/block', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::index')->bind('plugin_DSContents_admin_content_block');
-        $app->match(sprintf('/%s/dsc/sp/block/new', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::edit')->bind('plugin_DSContents_admin_content_block_new');
-        $app->match(sprintf('/%s/dsc/sp/block/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::edit')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_block_edit');
-        $app->delete(sprintf('/%s/dsc/sp/block/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::delete')->assert('id', '\d+')->bind('plugin_DSContents_admin_content_block_delete');
+        $app->match(sprintf('/%s/dsc/sp/block', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::index')->bind('plugin_dscontents_admin_content_block');
+        $app->match(sprintf('/%s/dsc/sp/block/new', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::edit')->bind('plugin_dscontents_admin_content_block_new');
+        $app->match(sprintf('/%s/dsc/sp/block/{id}/edit', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::edit')->assert('id', '\d+')->bind('plugin_dscontents_admin_content_block_edit');
+        $app->delete(sprintf('/%s/dsc/sp/block/{id}/delete', $app['config']['admin_route']), '\Plugin\DSContents\Controller\Admin\Content\BlockController::delete')->assert('id', '\d+')->bind('plugin_dscontents_admin_content_block_delete');
 
         /**
          * ルーティング登録
@@ -125,18 +125,18 @@ class DSContentsServiceProvider implements ServiceProviderInterface
                             foreach ($p['child'] as $key => $child) {
                                 if ($child['id'] == 'page') {
                                     array_splice($p['child'], $key + 1, 0, array(array(
-                                        'id' => 'plugin_DSContents_page_sp',
+                                        'id' => 'plugin_dscontents_page_sp',
                                         'name' => 'スマートフォン',
-                                        'url' => 'plugin_DSContents_admin_content_page',
+                                        'url' => 'plugin_dscontents_admin_content_page',
                                     )));
                                 }
                             }
                             foreach ($p['child'] as $key => $child) {
                                 if ($child['id'] == 'block') {
                                     array_splice($p['child'], $key + 1, 0, array(array(
-                                        'id' => 'plugin_DSContents_block_sp',
+                                        'id' => 'plugin_dscontents_block_sp',
                                         'name' => 'スマートフォン',
-                                        'url' => 'plugin_DSContents_admin_content_block',
+                                        'url' => 'plugin_dscontents_admin_content_block',
                                     )));
                                 }
                             }

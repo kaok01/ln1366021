@@ -57,7 +57,7 @@ class PageController extends AbstractController
         $editable = true;
 
         $builder = $app['form.factory']
-            ->createBuilder('plugin_DSContents_main_edit', $PageLayout);
+            ->createBuilder('plugin_dscontents_main_edit', $PageLayout);
 
         $event = new EventArgs(
             array(
@@ -139,7 +139,7 @@ class PageController extends AbstractController
                 $finder = Finder::create()->in($app['config']['root_dir'].'/app/cache/twig');
                 $fs->remove($finder);
 
-                return $app->redirect($app->url('plugin_DSContents_admin_content_page_edit', array('id' => $PageLayout->getId())));
+                return $app->redirect($app->url('plugin_dscontents_admin_content_page_edit', array('id' => $PageLayout->getId())));
             }
         }
 
@@ -168,7 +168,7 @@ class PageController extends AbstractController
 
         if (!$PageLayout) {
             $app->deleteMessage();
-            return $app->redirect($app->url('plugin_DSContents_admin_content_page'));
+            return $app->redirect($app->url('plugin_dscontents_admin_content_page'));
         }
 
         // ユーザーが作ったページのみ削除する
@@ -195,6 +195,6 @@ class PageController extends AbstractController
             $app->addSuccess('admin.delete.complete', 'admin');
         }
 
-        return $app->redirect($app->url('plugin_DSContents_admin_content_page'));
+        return $app->redirect($app->url('plugin_dscontents_admin_content_page'));
     }
 }

@@ -49,6 +49,6 @@ class MainEditType extends AbstractType
      */
     public function getName()
     {
-        return 'plugin_DSContents_main_edit';
+        return 'plugin_dscontents_main_edit';
     }
 }
