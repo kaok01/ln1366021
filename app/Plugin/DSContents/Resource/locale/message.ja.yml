@@ -14,7 +14,7 @@ admin.plugin.dscontents.page.copy.file: スマートフォンのテンプレー�
 admin.plugin.dscontents.page.delete.db: スマートフォンのページレイアウトを削除しました。
 admin.plugin.dscontents.page.delete.file: スマートフォンのテンプレートを削除しました。
 
-admin.plugin.dscontents.block.copy.db: スマートフォンのページレイアウトを追加しました。
+admin.plugin.dscontents.block.copy.db: スマートフォンのブロックを追加しました。
 admin.plugin.dscontents.block.copy.file: スマートフォンのテンプレートを複製しました。
-admin.plugin.dscontents.block.delete.db: スマートフォンのページレイアウトを削除しました。
+admin.plugin.dscontents.block.delete.db: スマートフォンのブロックを削除しました。
 admin.plugin.dscontents.block.delete.file: スマートフォンのテンプレートを削除しました。
