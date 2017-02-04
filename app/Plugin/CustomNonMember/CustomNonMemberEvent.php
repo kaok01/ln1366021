@@ -279,6 +279,21 @@ class CustomNonMemberEvent
     }
 
 
+    public function onFrontContactInitialize(EventArgs $event){
+        $builder = $event->getArgument('builder');
+        $builder
+            ->add('plg_privacy_check', 'checkbox', array(
+                'label' => '同意する',
+                'required' => false,
+                'mapped' => false,
+                'constraints' => array(
+                    new Assert\NotBlank(array(
+            'message' => 'ご購入手続きに進む場合は同意するにチェックしてください。',
+            )),
+                ),
+
+            ));        
+    }
 
     public function onFrontShoppingNonmemberInitialize(EventArgs $event){
 
@@ -295,7 +310,7 @@ class CustomNonMemberEvent
                 'mapped' => false,
                 'constraints' => array(
                     new Assert\NotBlank(array(
-            'message' => 'admin.plugin.customnonmember.privacycheck.error',
+            'message' => 'ご購入手続きに進む場合は同意するにチェックしてください。',
             )),
                 ),
 
@@ -444,6 +459,12 @@ class CustomNonMemberEvent
         $sec = $this->app['session'];
 
 
+    }
+
+    public function onFrontCartBuyStepComplete(EventArgs $event){
+
+        $app=$this->app;
+        $event->setResponse($app->redirect($app->url('shopping_nonmember')));
     }
 
     public function onFrontShoppingShippingMultipleChangeInitialize(EventArgs $event){

@@ -17,27 +17,21 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class FrontContactIndex extends AbstractWorkPlace
 {    
+    private $tag = '<!-- ## customnonmember ## -->'; 
     public function createTwig(TemplateEvent $event)
     {   
 
-
         $app = $this->app;
-
+        $tag = $this->tag;
         $source = $event->getSource();
 
-
-        if(preg_match('/history_list__detail_button.*>\n/',$source, $result)){
-        //if(preg_match('/<(.*)\s*id="admin_order_delete.*>\n/',$source, $result)){
-
-
-            $search = $result[0];
-
-
-            $snipet = file_get_contents($app['config']['plugin_realdir']. '/CustomNonMember/Resource/template/default/Event/Contact/index.twig');
-            $replace = $search. $snipet;
-            $source = str_replace($search, $replace, $source);
+        if (strpos($source, $tag)) {
+            $snipet = file_get_contents($app['config']['plugin_realdir']. '/CustomNonMember/Resource/template/default/Event/Contact/contact_index.twig');
+            $newHtml = $tag.$snipet;
+            $source = str_replace($tag, $newHtml, $source);
         }
-        
+
+
 
         $event->setSource($source);
 

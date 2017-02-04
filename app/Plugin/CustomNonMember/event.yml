@@ -32,6 +32,10 @@ front.shopping.nonmember.complete:
 
 mail.order:
     - [onMailServiceMailOrder, NORMAL]
+
+front.contact.index.initialize:
+    - [onFrontContactInitialize, NORMAL]
+
 front.contact.index.complete:
     - [onFrontContactIndexComplete, NORMAL]
 
@@ -48,4 +52,5 @@ front.cart.index.initialize:
     - [onFrontCartIndexInitialize, NORMAL]
 front.cart.index.complete:
     - [onFrontCartIndexComplete, NORMAL]
-
+front.cart.buystep.complete:
+    - [onFrontCartBuyStepComplete, NORMAL]
