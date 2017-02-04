@@ -11,3 +11,4 @@ admin.plugin.customnonmember.update.success: 商品を修正しました。
 admin.plugin.customnonmember.delete.success: 商品を削除しました。
 admin.plugin.customnonmember.complete.up: 商品を上へ移動しました。
 admin.plugin.customnonmember.complete.down: 商品を下へ移動しました。
+admin.plugin.customnonmember.privacycheck.error: 同意するにチェックを入れてください。

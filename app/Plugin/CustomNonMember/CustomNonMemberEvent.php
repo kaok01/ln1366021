@@ -294,7 +294,9 @@ class CustomNonMemberEvent
                 'required' => false,
                 'mapped' => false,
                 'constraints' => array(
-                    new Assert\NotBlank(),
+                    new Assert\NotBlank(array(
+            'message' => 'admin.plugin.customnonmember.privacycheck.error',
+            )),
                 ),
 
             ));
