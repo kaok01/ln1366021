@@ -7,8 +7,8 @@ Shopping/nonmember.twig:
     - [onRenderShoppingNonMember, NORMAL]
 
 ## フロント画面 > カート
-Cart/index.twig:
-    - [onRenderCart, NORMAL]
+# Cart/index.twig:
+#     - [onRenderCart, NORMAL]
 
 front.shopping.index.initialize:
     - [onFrontShoppingIndexInitialize, NORMAL]

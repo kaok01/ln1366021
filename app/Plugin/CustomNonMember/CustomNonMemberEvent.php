@@ -538,8 +538,8 @@ class CustomNonMemberEvent
     }
 
     public function onRenderCart(TemplateEvent $event){
-        $helper = new Event\WorkPlace\FrontCartIndex();
-        $helper->createTwig($event);
+        // $helper = new Event\WorkPlace\FrontCartIndex();
+        // $helper->createTwig($event);
 
     }
 
