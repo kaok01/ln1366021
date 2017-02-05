@@ -77,6 +77,29 @@ class ApplicationTrait extends \Silex\Application
     {
         return isset($this['front']) ? $this['front'] : null;
     }
+    public function isSmartPhone(){
+        $detect = new MobileDetect;
+        // SPでかつPC表示OFFの場合
+        // TabletはPC扱い
+        return ($detect->isMobile() && !$detect->isTablet()); //&& !SC_SmartphoneUserAgent_Ex::getSmartphonePcFlag();
+        
+    }
+    public function SwitchTemplate($config_name,&$configAll){
+        if($config_name=='path'){
+        $isSP = $this->isSmartPhone();
+        if($isSP){
+        //    dump($configAll);
+        $configAll['template_code'] = 
+        'default2';
+        $configAll['block_realdir'] = '/var/www/vhosts/ecq3-design.sample.jp/app/template/default2/Block';
+        $configAll['template_realdir'] = '/var/www/vhosts/ecq3-design.sample.jp/app/template/default2';
+        $configAll['template_html_realdir'] = '/var/www/vhosts/ecq3-design.sample.jp/html/template/default2';
+        $configAll['front_urlpath'] = '/template/default2';
+            
+        }
+
+        }        
+    }
 
     /*
      * 注意！以下コードはSilexのコードのコピーなので触らないコト
