@@ -90,13 +90,12 @@ class ApplicationTrait extends \Silex\Application
         $isSP = $this->isSmartPhone();
         if($isSP){
         //    dump($configAll);
-        $configAll['template_code'] = 
-        'default2';
-        $configAll['block_realdir'] = '/var/www/vhosts/ecq3-design.sample.jp/app/template/default2/Block';
-        $configAll['template_realdir'] = '/var/www/vhosts/ecq3-design.sample.jp/app/template/default2';
-        $configAll['template_html_realdir'] = '/var/www/vhosts/ecq3-design.sample.jp/html/template/default2';
-        $configAll['front_urlpath'] = '/template/default2';
-            
+        $configAll['template_code'] = 'sphone';
+        $configAll['block_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/app/template/sphone/Block';
+        $configAll['template_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/app/template/sphone';
+        $configAll['template_html_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/html/template/sphone';
+        $configAll['front_urlpath'] = '/template/sphone';
+        $configAll['user_data_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/html/user_data/sphone';
         }
 
         }        
