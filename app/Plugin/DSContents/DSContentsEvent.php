@@ -58,6 +58,30 @@ class DSContentsEvent
     {
         return $this->app->isGranted('ROLE_USER');
     }
+    public function onAppBefore(){
+        $this->rewriteconfig();
+    }
+
+    private function rewriteconfig(){
+
+        // load config
+        if($this->app->isFrontRequest()){
+            $isSP = $this->app->isSmartPhone();
+            if($isSP){
+
+                $config = $this->app['config'];
+                $config['template_code'] = $this->app['config']['DSContents']['const']['setting']['template_code'];
+                $config['block_realdir'] = $this->app['config']['DSContents']['const']['setting']['block_realdir'];
+                $config['template_realdir'] = $this->app['config']['DSContents']['const']['setting']['template_realdir'];
+                $config['template_html_realdir'] = $this->app['config']['DSContents']['const']['setting']['template_html_realdir'];
+                $config['front_urlpath'] = $this->app['config']['DSContents']['const']['setting']['front_urlpath'];
+                $config['user_data_realdir'] = $this->app['config']['DSContents']['const']['setting']['user_data_realdir'];
+                $this->app['config'] = $config;
+            }
+        }
+
+
+    }
     public function onRenderAdminProductIndex(TemplateEvent $event){
 
     }

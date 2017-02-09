@@ -1,3 +1,6 @@
+eccube.event.app.before:
+  - [onAppBefore, NORMAL]
+
 # 管理画面
 ## 管理画面 > 商品登録( 編集 ) > 商品付与率設定
 # admin.product.edit.initialize:
