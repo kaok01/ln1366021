@@ -85,24 +85,6 @@ class ApplicationTrait extends \Silex\Application
         return ($detect->isMobile() && !$detect->isTablet()); //&& !SC_SmartphoneUserAgent_Ex::getSmartphonePcFlag();
         
     }
-    public function SwitchTemplate($config_name,&$configAll){
-        if($config_name=='path'){
-            if($this->isFrontRequest()){
-                $isSP = $this->isSmartPhone();
-                if($isSP){
-                    //    dump($configAll);
-                    $configAll['template_code'] = $this['config']['DSContents']['const']['setting']['template_code'];
-                    $configAll['block_realdir'] = $this['config']['DSContents']['const']['setting']['block_realdir'];
-                    $configAll['template_realdir'] = $this['config']['DSContents']['const']['setting']['template_realdir'];
-                    $configAll['template_html_realdir'] = $this['config']['DSContents']['const']['setting']['template_html_realdir'];
-                    $configAll['front_urlpath'] = $this['config']['DSContents']['const']['setting']['front_urlpath'];
-                    $configAll['user_data_realdir'] = $this['config']['DSContents']['const']['setting']['user_data_realdir'];
-                        
-                }
-            }
-
-        }        
-    }
 
     /*
      * 注意！以下コードはSilexのコードのコピーなので触らないコト
