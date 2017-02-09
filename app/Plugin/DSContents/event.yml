@@ -309,3 +309,12 @@ front.cart.add.exception:
 # // buystep
 # const FRONT_CART_BUYSTEP_INITIALIZE = 'front.cart.buystep.initialize';
 # const FRONT_CART_BUYSTEP_COMPLETE = 'front.cart.buystep.complete';
+
+admin.content.page.edit.complete:
+    - [onAdminContentPageEditComplete, NORMAL]
+admin.content.page.delete.complete:
+    - [onAdminContentPageDeleteComplete, NORMAL]
+admin.content.block.edit.complete:
+    - [onAdminContentBlockEditComplete, NORMAL]
+admin.content.block.delete.complete:
+    - [onAdminContentBlockDeleteComplete, NORMAL]
