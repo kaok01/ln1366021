@@ -87,16 +87,19 @@ class ApplicationTrait extends \Silex\Application
     }
     public function SwitchTemplate($config_name,&$configAll){
         if($config_name=='path'){
-        $isSP = $this->isSmartPhone();
-        if($isSP){
-        //    dump($configAll);
-        $configAll['template_code'] = 'sphone';
-        $configAll['block_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/app/template/sphone/Block';
-        $configAll['template_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/app/template/sphone';
-        $configAll['template_html_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/html/template/sphone';
-        $configAll['front_urlpath'] = '/template/sphone';
-        $configAll['user_data_realdir'] = '/home/vagrant/crm-ecq-3012-kaok/html/user_data/sphone';
-        }
+            if($this->isFrontRequest()){
+                $isSP = $this->isSmartPhone();
+                if($isSP){
+                    //    dump($configAll);
+                    $configAll['template_code'] = $this['config']['DSContents']['const']['setting']['template_code'];
+                    $configAll['block_realdir'] = $this['config']['DSContents']['const']['setting']['block_realdir'];
+                    $configAll['template_realdir'] = $this['config']['DSContents']['const']['setting']['template_realdir'];
+                    $configAll['template_html_realdir'] = $this['config']['DSContents']['const']['setting']['template_html_realdir'];
+                    $configAll['front_urlpath'] = $this['config']['DSContents']['const']['setting']['front_urlpath'];
+                    $configAll['user_data_realdir'] = $this['config']['DSContents']['const']['setting']['user_data_realdir'];
+                        
+                }
+            }
 
         }        
     }
