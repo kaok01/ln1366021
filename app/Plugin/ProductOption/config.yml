@@ -7,3 +7,7 @@ service:
 orm.path:
     - /Resource/doctrine
 form:
+const:
+# 小計から場外する規格
+  exclude_product_class: 10
+  exclude_product_msg: ※提供事業者からの請求になります。
