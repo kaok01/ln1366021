@@ -36,9 +36,15 @@ class UserDataController
 {
     public function index(Application $app, Request $request, $route)
     {
+
+        $device = \Eccube\Entity\Master\DeviceType::DEVICE_TYPE_PC;
+        if($app->isSmartPhone()){
+            $device = \Eccube\Entity\Master\DeviceType::DEVICE_TYPE_SP;
+        }        
+
         $DeviceType = $app['orm.em']
             ->getRepository('Eccube\Entity\Master\DeviceType')
-            ->find(DeviceType::DEVICE_TYPE_PC);
+            ->find($device);
 
         $PageLayout = $app['eccube.repository.page_layout']->findOneBy(array(
             'url' => $route,

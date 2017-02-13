@@ -368,9 +368,14 @@ class Application extends ApplicationTrait
                     $route = 'preview';
                 }
 
+                $device = \Eccube\Entity\Master\DeviceType::DEVICE_TYPE_PC;
+                if($this->isSmartPhone()){
+                    $device = \Eccube\Entity\Master\DeviceType::DEVICE_TYPE_SP;
+                }
+
                 try {
                     $DeviceType = $app['eccube.repository.master.device_type']
-                        ->find(\Eccube\Entity\Master\DeviceType::DEVICE_TYPE_PC);
+                        ->find($device);
                     $PageLayout = $app['eccube.repository.page_layout']->getByUrl($DeviceType, $route);
                 } catch (\Doctrine\ORM\NoResultException $e) {
                     $PageLayout = $app['eccube.repository.page_layout']->newPageLayout($DeviceType);
@@ -1032,6 +1037,7 @@ class Application extends ApplicationTrait
         } else {
             $configAll = array_replace_recursive($configAll, $config_dist, $config);
         }
+
 
         return $this;
     }

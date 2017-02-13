@@ -1,0 +1,17 @@
+name: DSContentsプラグイン
+code: DSContents
+version: 1.0.0
+event: DSContentsEvent
+service:
+  - DSContentsServiceProvider
+orm.path:
+  - /Resource/doctrine
+
+const:
+  setting:
+    template_code: sphone
+    block_realdir: /home/vagrant/crm-ecq-3012-kaok/app/template/sphone/Block
+    template_realdir: /home/vagrant/crm-ecq-3012-kaok/app/template/sphone
+    template_html_realdir: /home/vagrant/crm-ecq-3012-kaok/html/template/sphone
+    front_urlpath: /template/sphone
+    user_data_realdir: /home/vagrant/crm-ecq-3012-kaok/html/user_data/sphone

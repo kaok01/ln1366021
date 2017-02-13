@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Eccube\Common\MobileDetect;
 
 /**
  * TODO Traitが使えるようになったら不要になる
@@ -76,6 +77,13 @@ class ApplicationTrait extends \Silex\Application
     public function isFrontRequest()
     {
         return isset($this['front']) ? $this['front'] : null;
+    }
+    public function isSmartPhone(){
+        $detect = new MobileDetect;
+        // SPでかつPC表示OFFの場合
+        // TabletはPC扱い
+        return ($detect->isMobile() && !$detect->isTablet()); //&& !SC_SmartphoneUserAgent_Ex::getSmartphonePcFlag();
+        
     }
 
     /*
