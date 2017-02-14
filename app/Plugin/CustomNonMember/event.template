@@ -1,6 +1,3 @@
-eccube.event.app.before:
-  - [onAppBefore, NORMAL]
-
 # 管理画面
 ## 管理画面 > 商品登録( 編集 ) > 商品付与率設定
 # admin.product.edit.initialize:
@@ -17,8 +14,8 @@ eccube.event.app.before:
 ## 管理画面 > 受注登録 (編集) > 利用商品フォーム生成
 # admin.order.edit.index.initialize:
 #     - [onAdminOrderEditIndexInitialize, NORMAL]
-# admin.order.edit.index.complete:
-#     - [onAdminOrderEditIndexComplete, NORMAL]
+admin.order.edit.index.complete:
+    - [onAdminOrderEditIndexComplete, NORMAL]
 
 ## 管理画面 > 受注一覧
 # admin.order.delete.complete:
@@ -109,6 +106,9 @@ Cart/index.twig:
 # mail.admin.order:
 #    - [onMailOrderComplete, NORMAL]
 
+# 受注ステータス更新
+service.shopping.order.status:
+    - [onShoppingOrderStatus, NORMAL]
 
 front.shopping.index.initialize:
     - [onFrontShoppingIndexInitialize, NORMAL]
@@ -312,12 +312,3 @@ front.cart.add.exception:
 # // buystep
 # const FRONT_CART_BUYSTEP_INITIALIZE = 'front.cart.buystep.initialize';
 # const FRONT_CART_BUYSTEP_COMPLETE = 'front.cart.buystep.complete';
-
-admin.content.page.edit.complete:
-    - [onAdminContentPageEditComplete, NORMAL]
-admin.content.page.delete.complete:
-    - [onAdminContentPageDeleteComplete, NORMAL]
-admin.content.block.edit.complete:
-    - [onAdminContentBlockEditComplete, NORMAL]
-admin.content.block.delete.complete:
-    - [onAdminContentBlockDeleteComplete, NORMAL]

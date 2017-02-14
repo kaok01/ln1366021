@@ -8,3 +8,13 @@ admin.plugin.dscontents.update.success: を修正しました。
 admin.plugin.dscontents.delete.success: を削除しました。
 admin.plugin.dscontents.complete.up: を上へ移動しました。
 admin.plugin.dscontents.complete.down: を下へ移動しました。
+
+admin.plugin.dscontents.page.copy.db: スマートフォンのページレイアウトを追加しました。
+admin.plugin.dscontents.page.copy.file: スマートフォンのテンプレートを複製しました。
+admin.plugin.dscontents.page.delete.db: スマートフォンのページレイアウトを削除しました。
+admin.plugin.dscontents.page.delete.file: スマートフォンのテンプレートを削除しました。
+
+admin.plugin.dscontents.block.copy.db: スマートフォンのブロックを追加しました。
+admin.plugin.dscontents.block.copy.file: スマートフォンのテンプレートを複製しました。
+admin.plugin.dscontents.block.delete.db: スマートフォンのブロックを削除しました。
+admin.plugin.dscontents.block.delete.file: スマートフォンのテンプレートを削除しました。

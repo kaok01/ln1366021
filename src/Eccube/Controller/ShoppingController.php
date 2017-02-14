@@ -195,7 +195,10 @@ class ShoppingController extends AbstractController
             $request
         );
         $app['eccube.event.dispatcher']->dispatch(EccubeEvents::FRONT_SHOPPING_CONFIRM_INITIALIZE, $event);
-
+        //追加処理
+        if($event->getResponse()){
+            return $event->getResponse();
+        }
         $form = $builder->getForm();
 
         $form->handleRequest($request);
@@ -938,15 +941,20 @@ class ShoppingController extends AbstractController
 
         $builder = $app['form.factory']->createBuilder('nonmember');
 
+        //初期値表示用
+        $form = $builder->getForm();
+
         $event = new EventArgs(
             array(
                 'builder' => $builder,
+                'form'=>$form,
             ),
             $request
         );
         $app['eccube.event.dispatcher']->dispatch(EccubeEvents::FRONT_SHOPPING_NONMEMBER_INITIALIZE, $event);
-
-        $form = $builder->getForm();
+        if($event->getArgument('form')){
+            $form = $event->getArgument('form');
+        }
 
         $form->handleRequest($request);
 
@@ -1393,7 +1401,7 @@ class ShoppingController extends AbstractController
      * 非会員でのお客様情報変更時の入力チェック
      *
      * @param Application $app
-     * @param array $data リクエストパラメータ
+     * @param array       $data リクエストパラメータ
      * @return array
      */
     private function customerValidation(Application $app, array $data)

@@ -280,5 +280,35 @@ class DSContentsEvent
 
     }
 
+    /**
+     * @param EventArgs $event
+     */
+    public function onAdminContentPageEditComplete($event)
+    {
+        $this->app['eccube.plugin.DSContents.event']->onAdminContentPageEditComplete($event);
+    }
 
+    /**
+     * @param EventArgs $event
+     */
+    public function onAdminContentPageDeleteComplete($event)
+    {
+        $this->app['eccube.plugin.DSContents.event']->onAdminContentPageDeleteComplete($event);
+    }
+
+    /**
+     * @param EventArgs $event
+     */
+    public function onAdminContentBlockEditComplete($event)
+    {
+        $this->app['eccube.plugin.DSContents.event']->onAdminContentBlockEditComplete($event);
+    }
+
+    /**
+     * @param EventArgs $event
+     */
+    public function onAdminContentBlockDeleteComplete($event)
+    {
+        $this->app['eccube.plugin.DSContents.event']->onAdminContentBlockDeleteComplete($event);
+    }
 }
