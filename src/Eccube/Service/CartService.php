@@ -327,10 +327,17 @@ class CartService
         }
 
         $CartItem = new CartItem();
+        $price = 0;
+        if($ProductClass->getClassCategory2()->getId==4){
+
+        }else{
+            $price = $ProductClass->getPrice02IncTax();
+
+        }
         $CartItem
             ->setClassName('Eccube\Entity\ProductClass')
             ->setClassId((string) $ProductClass->getId())
-            ->setPrice($ProductClass->getPrice02IncTax())
+            ->setPrice($price)
             ->setQuantity($quantity);
 
         $this->cart->setCartItem($CartItem);
