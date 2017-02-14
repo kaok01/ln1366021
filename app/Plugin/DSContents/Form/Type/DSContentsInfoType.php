@@ -48,7 +48,7 @@ class DSContentsInfoType extends AbstractType
                     'label' => 'SP用テンプレートコード',
                     'required' => true,
                     'empty_data' => null,
-                    'mapped' => false,
+                    'mapped' => true,
                     'constraints' => array(
                         new Assert\NotBlank(),
                     ),

@@ -15,6 +15,10 @@ use Plugin\DSContents\Form\Type;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception as HttpException;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Yaml\Dumper;
+use Symfony\Component\Yaml\Parser;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 
 /**
  */
@@ -45,6 +49,34 @@ class AdminDSContentsController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $DSContentsInfo = $form->getData();
+            $configfile = $app['config']['plugin_realdir'].'/DSContents/config.yml';
+
+            $yaml = new Parser();
+
+            $value = $yaml->parse(file_get_contents($configfile));
+
+
+            $value['const']['setting']['template_code']=$DSContentsInfo['template_code'];
+            $value['const']['setting']['template_realdir']=realpath($app['config']['template_realdir'].'/../'.$DSContentsInfo['template_code']);
+            $value['const']['setting']['block_realdir']=$value['const']['setting']['template_realdir'].'/Block';
+            $value['const']['setting']['template_html_realdir']=realpath($app['config']['template_html_realdir'].'/../'.$DSContentsInfo['template_code']);
+            $value['const']['setting']['front_urlpath']=$app['config']['front_urlpath'].'/../'.$DSContentsInfo['template_code'];
+            $value['const']['setting']['user_data_realdir']=$app['config']['user_data_realdir'].'/../'.$DSContentsInfo['template_code'];
+
+
+            $dumper = new Dumper();
+
+            $yaml = $dumper->dump($value,3);
+
+            file_put_contents($configfile, $yaml);
+            
+            //キャッシュ消す
+            // twig キャッシュの削除.
+            $fs = new Filesystem();
+
+            $finder = Finder::create()->in($app['config']['root_dir'].'/app/cache/plugin');
+            $fs->remove($finder);
+
 
             $app->addSuccess('admin.dscontents.save.complete', 'admin');
 

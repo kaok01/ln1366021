@@ -3,23 +3,17 @@ code: DSContents
 version: 1.0.0
 event: DSContentsEvent
 service:
-  - DSContentsServiceProvider
+    - DSContentsServiceProvider
 orm.path:
-  - /Resource/doctrine
-
+    - /Resource/doctrine
 const:
-  setting:
-
-    template_code: sphone
-    block_realdir: /home/vagrant/crm-ecq-3012-kaok/app/template/sphone/Block
-    template_realdir: /home/vagrant/crm-ecq-3012-kaok/app/template/sphone
-    template_html_realdir: /home/vagrant/crm-ecq-3012-kaok/html/template/sphone
-    front_urlpath: /template/sphone
-    user_data_realdir: /home/vagrant/crm-ecq-3012-kaok/html/user_data/sphone
-
-  # template_realdir からの相対パス
-  template_sphone_relpath: ../sphone
-  # user_data_realdir からの相対パス
-  user_data_sphone_relpath: sphone
-  # block_realdir からの相対パス
-  block_sphone_relpath: ../../sphone/Block
+    setting:
+        template_code: sphone
+        block_realdir: /home/vagrant/crm-ecq-3012-kaok/app/template/sphone/Block
+        template_realdir: /home/vagrant/crm-ecq-3012-kaok/app/template/sphone
+        template_html_realdir: /home/vagrant/crm-ecq-3012-kaok/html/template/sphone
+        front_urlpath: /template/default/../sphone
+        user_data_realdir: /home/vagrant/crm-ecq-3012-kaok/html/user_data/../sphone
+    template_sphone_relpath: ../sphone
+    user_data_sphone_relpath: sphone
+    block_sphone_relpath: ../../sphone/Block
