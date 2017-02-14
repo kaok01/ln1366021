@@ -16,7 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class DataImportInfoType
  * @package Plugin\DSContents\Form\Type
  */
 class DSContentsInfoType extends AbstractType
@@ -27,19 +26,11 @@ class DSContentsInfoType extends AbstractType
     protected $orderStatus;
 
     /**
-     * DataImportInfoType constructor.
      * @param \Eccube\Application $app
      */
     public function __construct(\Eccube\Application $app)
     {
         $this->app = $app;
-        // // 全受注ステータス ID・名称 取得保持
-        // $this->orderStatus = array();
-        // $this->app['orm.em']->getFilters()->enable('incomplete_order_status_hidden');
-        // foreach ($this->app['eccube.repository.order_status']->findAllArray() as $id => $node) {
-        //     $this->orderStatus[$id] = $node['name'];
-        // }
-        // $this->app['orm.em']->getFilters()->disable('incomplete_order_status_hidden');
     }
 
     /**
@@ -51,7 +42,7 @@ class DSContentsInfoType extends AbstractType
     {
         $builder
             ->add(
-                'plg_add_dataimport_status',
+                'template_code',
                 'text',
                 array(
                     'label' => 'SP用テンプレートコード',
@@ -71,11 +62,6 @@ class DSContentsInfoType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        // $resolver->setDefaults(
-        //     array(
-        //         'data_class' => 'Plugin\DataImport\Entity\DataImportInfo',
-        //     )
-        // );
     }
 
     /**

@@ -21,7 +21,7 @@
 {% block main %}
 
     <div class="row" id="aside_wrap">
-        <form name="form1" role="form" class="form-horizontal" id="dataimport_form" method="post"
+        <form name="form1" role="form" class="form-horizontal" id="dscontents_form" method="post"
               action="{{ url('dscontents_info') }}">
             {{ form_widget(form._token) }}
             <div class="col-md-9">
@@ -33,36 +33,36 @@
                         <div class="form-group">
                             <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
                             <div class="col-sm-9 col-lg-9">
-                                {{ form_widget(form.plg_add_dataimport_status) }}
-                                {{ form_errors(form.plg_add_dataimport_status) }}
+                                {{ form_widget(form.template_code) }}
+                                {{ form_errors(form.template_code) }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-3 col-lg-3">SP用ブロックパス</div>
                             <div class="col-sm-9 col-lg-9">
                                 {{ app.config.DSContents.const.setting.block_realdir }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートパス</div>
                             <div class="col-sm-9 col-lg-9">
                                 {{ app.config.DSContents.const.setting.template_realdir }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートｈｔｍｌ</div>
                             <div class="col-sm-9 col-lg-9">
                                 {{ app.config.DSContents.const.setting.template_html_realdir }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-3 col-lg-3">SP用フロントURL</div>
                             <div class="col-sm-9 col-lg-9">
                                 {{ app.config.DSContents.const.setting.front_urlpath }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-3 col-lg-3">SP用user_dataパス</div>
                             <div class="col-sm-9 col-lg-9">
                                 {{ app.config.DSContents.const.setting.user_data_realdir }}
                             </div>

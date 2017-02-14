@@ -17,21 +17,16 @@ use Symfony\Component\HttpKernel\Exception as HttpException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * データインポート設定画面用コントローラー
- * Class AdminDataImportController
- * @package Plugin\DataImport\Controller
  */
 class AdminDSContentsController
 {
     /**
-     * AdminDataImportController constructor.
      */
     public function __construct()
     {
     }
 
     /**
-     * データインポート基本情報管理設定画面
      * @param Application $app
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -40,26 +35,23 @@ class AdminDSContentsController
     {
         $app['monolog.DSContents.admin']->addInfo('index start');
 
-        // 最終保存のデータインポート設定情報取得
-
         $form = $app['form.factory']
             ->createBuilder('admin_dscontents_info', null)
             ->getForm();
-        $form->get('plg_add_dataimport_status')->setData($app['config']['DSContents']
+        $form->get('template_code')->setData($app['config']['DSContents']
             ['const']['setting']['template_code']);
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $DataImportInfo = $form->getData();
-            // $app['eccube.plugin.dataimport.repository.dataimportinfo']->save($DataImportInfo);
+            $DSContentsInfo = $form->getData();
 
             $app->addSuccess('admin.dscontents.save.complete', 'admin');
 
             $app['monolog.DSContents.admin']->addInfo(
                 'index save',
                 array(
-                    'saveData' => $app['serializer']->serialize($DataImportInfo, 'json'),
+                    'saveData' => $app['serializer']->serialize($DSContentsInfo, 'json'),
                 )
             );
 
@@ -74,7 +66,7 @@ class AdminDSContentsController
             'DSContents/Resource/template/admin/dscontentsinfo.twig',
             array(
                 'form' => $form->createView(),
-                'DSContents' => $DataImportInfo,
+                'DSContents' => $DSContentsInfo,
             )
         );
     }
