@@ -11,7 +11,7 @@
 #}
 {% extends 'default_frame.twig' %}
 
-{% set menus = ['setting', 'shop', 'shop_index'] %}
+{% set menus = ['setting','config', 'DSContents_info'] %}
 
 {% block title %}基本情報設定{% endblock %}
 {% block sub_title %}機能設定{% endblock %}
@@ -20,5 +20,74 @@
 
 {% block main %}
 
+    <div class="row" id="aside_wrap">
+        <form name="form1" role="form" class="form-horizontal" id="dataimport_form" method="post"
+              action="{{ url('dscontents_info') }}">
+            {{ form_widget(form._token) }}
+            <div class="col-md-9">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">SP用テンプレート設定</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-9 col-lg-9">
+                                {{ form_widget(form.plg_add_dataimport_status) }}
+                                {{ form_errors(form.plg_add_dataimport_status) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-9 col-lg-9">
+                                {{ app.config.DSContents.const.setting.block_realdir }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-9 col-lg-9">
+                                {{ app.config.DSContents.const.setting.template_realdir }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-9 col-lg-9">
+                                {{ app.config.DSContents.const.setting.template_html_realdir }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-9 col-lg-9">
+                                {{ app.config.DSContents.const.setting.front_urlpath }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-lg-3">SP用テンプレートコード</div>
+                            <div class="col-sm-9 col-lg-9">
+                                {{ app.config.DSContents.const.setting.user_data_realdir }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- /.col -->
+            <div class="col-md-3" id="aside_column">
+                <div class="col_inner">
+                    <div class="box no-header">
+                        <div class="box-body">
+                            <div class="row text-center">
+                                <div class="col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0">
+                                    <button class="btn btn-primary btn-block btn-lg" type="submit">
+                                        登録
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
 {% endblock %}
