@@ -1,0 +1,10 @@
+name: 商品ソート項目拡張プラグイン
+code: ProductSortColumn
+version: 0.0.1
+event: PluginEvent
+service:
+    - PluginServiceProvider
+orm.path:
+    - /Resource/doctrine
+const:
+    product_sort_list_limit: 5

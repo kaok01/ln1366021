@@ -1,0 +1,121 @@
+{% block main %}
+    <script>
+    $(function(){
+
+        $('#move-detail').click(function() {
+            $('#mode').val('customentryform_add_cart');
+        });
+
+    });
+    </script>
+    <!-- ▼item_detail222▼ -->
+    <div id="item_detail">
+        <div id="detail_wrap" class="row">
+            <!--★画像★-->
+            <div id="item_photo_area" class="col-sm-6">
+                <div id="detail_image_box__slides" class="slides">
+                    {% if Product.ProductImage|length > 0 %}
+                        {% for ProductImage in Product.ProductImage %}
+                        <div id="detail_image_box__item--{{ loop.index }}"><img src="{{ app.config.image_save_urlpath }}/{{ ProductImage|no_image_product }}"/></div>
+                        {% endfor %}
+                    {% else %}
+                        <div id="detail_image_box__item"><img src="{{ app.config.image_save_urlpath }}/{{ ''|no_image_product }}"/></div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <section id="item_detail_area" class="col-sm-6">
+
+                <!--★商品名★-->
+                <!--★商品名★-->
+                <h3 id="detail_description_box__name" class="item_name">{{ __EX_PRODUCT_MAKER.name }} {{ Product.name }}</h3>
+
+                <div id="detail_description_box__body" class="item_detail">
+
+                    {% if Product.ProductTag is not empty %}
+                        <!--▼商品タグ-->
+                        <div id="product_tag_box" class="product_tag">
+                            {% for ProductTag in Product.ProductTag %}
+                                <span id="product_tag_box__product_tag--{{ ProductTag.Tag.id }}" class="product_tag_list">{{ ProductTag.Tag }}</span>
+                            {% endfor %}
+                        </div>
+                        <hr>
+                        <!--▲商品タグ-->
+                    {% endif %}
+
+
+                    <!-- ▼料金▼ -->
+                    <div class="payment-price-box js-payment-price-switch">
+                    </div>
+                    <p class="caution">※税抜き価格になります。</p>
+                    <!-- ▲料金▲ -->
+
+                    <!--▼商品コード-->
+                    <!--▲商品コード-->
+
+                    <!-- ▼関連カテゴリ▼ -->
+                    <!-- ▲関連カテゴリ▲ -->
+
+                        <!--▼商品カラー-->
+                        <!--▲商品カラー-->
+
+
+                        <!--▼買い物かご-->
+                        <div id="detail_cart_box" class="cart_area">
+                            {% if Product.stock_find %}
+
+
+                                {# カートボタン #}
+                                <div id="detail_cart_box__button_area" class="btn_area">
+                                    <ul id="detail_cart_box__insert_button" class="row">
+                                        <li class="col-xs-12 col-sm-8">
+                                            {% if pel_ProductMaker.disabled or pel_ProductMaker is null %}
+                                            <button type="button" id="move-detail" class="btn btn-primary btn-block">購入手続きへ</button>{% endif %}</li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                {# 在庫がない場合は品切れボタンのみ表示 #}
+                                <div id="detail_cart_box__button_area" class="btn_area">
+                                    <ul class="row">
+                                        <li class="col-xs-12 col-sm-8"><button type="button" class="btn btn-default btn-block" disabled="disabled">ただいま品切れ中です</button></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <!--▲買い物かご-->
+                    <ul class="row">
+                    <li class="col-xs-12 col-sm-8">
+                        <!--# pel-plugin-other-url-tag #-->
+                    </li>
+                    </ul>
+
+                    <!--★商品説明★-->
+                    <p id="detail_not_stock_box__description_detail" class="item_comment">{{ Product.description_detail|raw|nl2br }}</p>
+
+                </div>
+                <!-- /.item_detail -->
+
+            </section>
+            <!--詳細ここまで-->
+
+
+        </div>
+
+
+
+
+        {# フリーエリア #}
+        {% if Product.freearea %}
+        <div id="sub_area" class="row">
+            <div class="col-sm-10">
+                <div id="detail_free_box__freearea" class="freearea">{{ include(template_from_string(Product.freearea)) }}</div>
+            </div>
+        </div>
+        {% endif %}
+
+
+
+    </div>
+    <!-- ▲item_detail222▲ -->
+
+{% endblock %}

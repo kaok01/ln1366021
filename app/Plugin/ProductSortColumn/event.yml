@@ -1,0 +1,12 @@
+admin.product.edit.complete:
+    - [onAdminProductEditComplete, NORMAL]
+admin.content.block.edit.initialize:
+    - [onAdminContentBlockEditInitialize, NORMAL]
+eccube.event.render.admin_product_product_new.before:
+    - [onAdminProductEditRenderBefore, NORMAL]
+eccube.event.render.admin_product_product_edit.before:
+    - [onAdminProductEditRenderBefore, NORMAL]
+Admin/Product/product.twig:
+    - [onAdminProductEditRender, NORMAL]
+front.product.index.search:
+    - [onProductSearch, NORMAL]

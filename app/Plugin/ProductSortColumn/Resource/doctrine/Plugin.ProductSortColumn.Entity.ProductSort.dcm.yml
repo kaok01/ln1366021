@@ -1,0 +1,18 @@
+Plugin\ProductSortColumn\Entity\ProductSort:
+    type: entity
+    table: plg_product_sort_column_product_sort
+    repositoryClass: Plugin\ProductSortColumn\Repository\ProductSortRepository
+    id:
+        Product:
+            associationKey: true
+    fields:
+        sort01:
+            type: text
+            nullable: true
+    oneToOne:
+        Product:
+            targetEntity: Eccube\Entity\Product
+            joinColumn:
+                name: product_id
+                referencedColumnName: product_id
+    lifecycleCallbacks: {}
