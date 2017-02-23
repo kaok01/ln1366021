@@ -34,6 +34,11 @@ class ProductClass extends \Eccube\Entity\AbstractEntity
     private $add = false;
     private $tax_rate = false;
 
+    public function __toString()
+    {
+        return $this->ClassCategory1.'<br/>'.$this->price02;
+    }
+
     /**
      * Is Enable
      *
